@@ -404,7 +404,7 @@
       list-style: none;
       font-size: 0.9rem;
       color: var(--text-soft);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .info-list li {
@@ -422,6 +422,12 @@
       box-shadow: 0 0 0 2px rgba(255, 187, 57, 0.35);
     }
 
+    .extras-title {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      margin: 8px 0 6px;
+    }
+
     .buttons-row {
       display: flex;
       flex-wrap: wrap;
@@ -429,21 +435,23 @@
       margin-top: 4px;
     }
 
-    /* BLOCO DIREITO – GIF DO CONVITE */
+    /* BLOCO DIREITO – GIF DO CONVITE (COM MAIS DESTAQUE) */
     .hero {
       border-radius: 20px;
       background: radial-gradient(circle at top, #ffeef8, #f2e8ff);
-      padding: 12px 12px 14px;
-      border: 1px solid rgba(160, 123, 255, 0.25);
+      padding: 12px 12px 16px;
+      border: 1px solid rgba(160, 123, 255, 0.4);
       display: flex;
       flex-direction: column;
       gap: 10px;
+      box-shadow: 0 18px 40px rgba(76, 43, 189, 0.55);
+      animation: heroFloat 5s ease-in-out infinite;
     }
 
-    @media (min-width: 880px) {
-      .hero {
-        height: 100%;
-      }
+    @keyframes heroFloat {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
     }
 
     .hero-label {
@@ -467,6 +475,7 @@
       overflow: hidden;
       position: relative;
       background: #000;
+      box-shadow: 0 14px 35px rgba(76, 43, 189, 0.65);
     }
 
     .hero-image-wrapper::after {
@@ -488,65 +497,6 @@
       height: auto;
     }
 
-    /* QR CODE */
-    .qr-section {
-      margin-top: 18px;
-      background: linear-gradient(135deg, #fffdf5, #f7ecff);
-      border-radius: 18px;
-      padding: 12px 10px 14px;
-      border: 1px dashed rgba(141, 100, 255, 0.55);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    @media (min-width: 720px) {
-      .qr-section {
-        padding: 12px 14px 14px;
-      }
-    }
-
-    .qr-thumb {
-      flex: 0 0 78px;
-      height: 78px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #fff;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .qr-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .qr-text {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .qr-text h3 {
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
-    }
-
-    .qr-text p {
-      font-size: 0.82rem;
-      color: var(--text-soft);
-      line-height: 1.4;
-    }
-
-    .qr-highlight {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
     footer {
       position: relative;
       z-index: 1;
@@ -554,6 +504,101 @@
       text-align: center;
       font-size: 0.75rem;
       color: rgba(255, 255, 255, 0.82);
+    }
+
+    /* MODAL LISTA DE PRESENTES */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 40;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 8, 40, 0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-card {
+      position: relative;
+      z-index: 1;
+      max-width: 410px;
+      width: calc(100% - 32px);
+      background: linear-gradient(145deg, #fff9ff, #f6ecff);
+      border-radius: 20px;
+      padding: 18px 16px 16px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      animation: modalFadeUp 0.28s ease-out;
+      border: 1px solid rgba(123, 63, 255, 0.25);
+    }
+
+    @keyframes modalFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-title {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-text {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .gift-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0 0 12px;
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .gift-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .gift-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-top: 4px;
+    }
+
+    .modal-footnote {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-close {
+      font-size: 0.85rem;
+      padding-inline: 14px;
     }
   </style>
 </head>
@@ -618,7 +663,7 @@
         </div>
         <h1>Casa Mágica da Alexandra</h1>
         <p class="subtitle">
-          Abra o convite animado e venha viver essa magia com a gente!
+          Veja o convite animado e venha viver essa magia com a gente!
         </p>
       </header>
 
@@ -657,12 +702,21 @@
                 </li>
               </ul>
 
+              <p class="extras-title">
+                Ah, e se você quiser…
+              </p>
+
               <div class="buttons-row">
-                <a href="#convite-animado" class="btn btn-primary">
-                  🎬 Ver convite animado
-                </a>
-                <a href="convite-ale.gif.gif" download class="btn btn-soft">
-                  ⬇️ Baixar convite (GIF)
+                <button type="button" id="giftListBtn" class="btn btn-soft">
+                  🎁 Ver sugestões de presentes
+                </button>
+                <a
+                  class="btn btn-primary"
+                  href="https://wa.me/5531992727195?text=Oi%20Alexandra!%20Quero%20confirmar%20a%20minha%20presen%C3%A7a%20na%20sua%20festa%20%F0%9F%92%9C%20%E2%9C%A8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ✅ Confirmar presença
                 </a>
               </div>
             </div>
@@ -673,7 +727,7 @@
             <div class="hero">
               <div class="hero-label">
                 <span>Prévia do convite</span>
-                <span class="badge-mini">Toque e aumente o zoom</span>
+                <span class="badge-mini">Convite animado em GIF</span>
               </div>
 
               <div class="hero-image-wrapper">
@@ -686,25 +740,6 @@
             </div>
           </section>
         </div>
-
-        <!-- QR CODE -->
-        <section class="qr-section">
-          <div class="qr-thumb">
-            <img
-              src="qr-convite-alexandra.png"
-              alt="QR Code para abrir o convite da Casa Mágica da Alexandra"
-              loading="lazy"
-            />
-          </div>
-          <div class="qr-text">
-            <h3>Abrir o convite pelo celular</h3>
-            <p>
-              Aponte a câmera do seu celular para o
-              <span class="qr-highlight">QR Code</span> ao lado e abra o convite
-              diretamente no navegador. É rápido, fácil e mágico! ✨
-            </p>
-          </div>
-        </section>
       </main>
 
       <footer>
@@ -713,8 +748,53 @@
     </div>
   </div>
 
+  <!-- MODAL LISTA DE PRESENTES -->
+  <div id="gift-modal" class="modal hidden" aria-hidden="true">
+    <div id="giftModalBackdrop" class="modal-backdrop"></div>
+    <div class="modal-card">
+      <h3 class="modal-title">🎁 Sugestões de presentes</h3>
+      <p class="modal-text">
+        Se você quiser presentear, aqui vão algumas ideias que combinam com a minha idade
+        e com esse momento especial. Mas o mais importante mesmo é a sua presença! 💜
+      </p>
+
+      <ul class="gift-list">
+        <li>
+          <span class="gift-dot"></span>
+          <span>Livrinhos de história ilustrados ou bíblia infantil.</span>
+        </li>
+        <li>
+          <span class="gift-dot"></span>
+          <span>Jogos educativos ou brinquedos de montar (blocos, encaixe, quebra-cabeça simples).</span>
+        </li>
+        <li>
+          <span class="gift-dot"></span>
+          <span>Material de arte: lápis de cor, giz de cera, massinha, cadernos de desenho.</span>
+        </li>
+        <li>
+          <span class="gift-dot"></span>
+          <span>Bonecas, bichinhos de pelúcia ou personagens que estimulam a imaginação.</span>
+        </li>
+        <li>
+          <span class="gift-dot"></span>
+          <span>Roupinhas confortáveis ou pijama fofinho tamanho 4 anos.</span>
+        </li>
+      </ul>
+
+      <p class="modal-footnote">
+        Fique à vontade para escolher o que desejar ou até vir sem presente:
+        <strong>a sua presença já é um presente enorme pra mim!</strong> 🎈
+      </p>
+
+      <div class="modal-actions">
+        <button id="closeGiftModal" class="btn btn-soft btn-close">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Troca da tela 1 (mensagem) para a tela 2 (convite)
     document.addEventListener('DOMContentLoaded', function () {
       var btn = document.getElementById('seeInviteBtn');
       var introCard = document.getElementById('intro-card');
@@ -726,6 +806,33 @@
           inviteCard.classList.remove('hidden');
           inviteCard.classList.add('fade-in');
         });
+      }
+
+      // Modal lista de presentes
+      var giftBtn = document.getElementById('giftListBtn');
+      var giftModal = document.getElementById('gift-modal');
+      var closeGiftBtn = document.getElementById('closeGiftModal');
+      var giftBackdrop = document.getElementById('giftModalBackdrop');
+
+      function closeGiftModal() {
+        if (!giftModal) return;
+        giftModal.classList.add('hidden');
+        giftModal.setAttribute('aria-hidden', 'true');
+      }
+
+      if (giftBtn && giftModal) {
+        giftBtn.addEventListener('click', function () {
+          giftModal.classList.remove('hidden');
+          giftModal.setAttribute('aria-hidden', 'false');
+        });
+      }
+
+      if (closeGiftBtn) {
+        closeGiftBtn.addEventListener('click', closeGiftModal);
+      }
+
+      if (giftBackdrop) {
+        giftBackdrop.addEventListener('click', closeGiftModal);
       }
     });
   </script>
