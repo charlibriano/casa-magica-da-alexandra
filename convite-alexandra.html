@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -426,12 +427,11 @@
   </style>
 </head>
 <body>
-  <!-- áudio escondido, tenta tocar ao abrir; loop para ficar o tempo todo -->
+  <!-- áudio escondido: a música só vai tocar quando clicar no botão do convite -->
   <audio
     id="bg-music"
     src="musica%20casa%20magica.mp3"
     preload="auto"
-    autoplay
     loop
     playsinline
   ></audio>
@@ -631,37 +631,24 @@
       const btn        = document.getElementById('seeInviteBtn');
       const audio      = document.getElementById('bg-music');
 
-      // tenta tocar a música ao carregar
-      if (audio) {
-        const tryPlay = () => {
-          audio.play().catch(() => {
-            // se bloquear aqui, a gente resolve no primeiro toque
-          });
-        };
-
-        tryPlay();
-
-        // garante que no primeiro toque/click a música comece
-        const resumeOnInteract = () => {
-          audio.play().catch(() => {});
-          document.removeEventListener('click', resumeOnInteract);
-          document.removeEventListener('touchstart', resumeOnInteract);
-        };
-
-        document.addEventListener('click', resumeOnInteract, { once: true });
-        document.addEventListener('touchstart', resumeOnInteract, { once: true });
-      }
-
-      // alterna tela 1 → tela 2
       if (btn) {
         btn.addEventListener('click', () => {
+          // troca de tela
           introCard.classList.add('hidden');
           inviteCard.classList.remove('hidden');
           inviteCard.classList.add('fade-in');
+
+          // tenta tocar a música no clique (gesto do usuário)
+          if (audio) {
+            audio.currentTime = 0;
+            audio.play().catch(() => {
+              // se ainda assim não tocar, o navegador bloqueou mesmo assim
+            });
+          }
         });
       }
     });
   </script>
 
 </body>
-</html> 
+</html>
