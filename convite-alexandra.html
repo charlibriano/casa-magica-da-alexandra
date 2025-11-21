@@ -86,46 +86,8 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    header {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      margin-bottom: 18px;
-    }
+    /* ---------- TELA 1 ---------- */
 
-    header h1 {
-      font-size: 1.9rem;
-      line-height: 1.1;
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--primary-dark);
-      text-shadow: 0 3px 10px rgba(71, 32, 133, 0.4);
-    }
-
-    @media (min-width: 720px) {
-      header h1 { font-size: 2.3rem; }
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.88);
-      border-radius: 999px;
-      padding: 4px 12px;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-      border: 1px solid rgba(123, 63, 255, 0.25);
-      margin-bottom: 5px;
-    }
-
-    header p.subtitle {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-    }
-
-    /* TELA 1 */
     .intro-content {
       position: relative;
       z-index: 1;
@@ -144,69 +106,18 @@
       border: 1px solid rgba(123, 63, 255, 0.25);
       font-size: 0.82rem;
       color: var(--text-soft);
-      margin-bottom: 16px;
-    }
-
-    .intro-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      align-items: center;
-    }
-
-    @media (min-width: 720px) {
-      .intro-layout {
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        text-align: left;
-      }
-    }
-
-    .intro-text-block { flex: 1.2; }
-
-    .intro-title {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: var(--primary-dark);
-    }
-
-    .intro-text {
-      font-size: 0.98rem;
-      line-height: 1.6;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .intro-highlight { font-weight: 600; color: var(--primary); }
-
-    .intro-note {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      margin-top: 6px;
-    }
-
-    .intro-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-      justify-content: center;
-    }
-
-    @media (min-width: 720px) {
-      .intro-buttons { justify-content: flex-start; }
+      margin-bottom: 14px;
     }
 
     .alexandra-photo-card {
-      flex: 0.9;
-      max-width: 260px;
-      width: 80%;
+      max-width: 280px;
+      width: 100%;
+      margin: 0 auto 16px;
       background: radial-gradient(circle at top, #ffe9ff, #f3e7ff);
-      border-radius: 24px;
-      padding: 10px 10px 12px;
+      border-radius: 28px;
+      padding: 12px 12px 14px;
       border: 1px solid rgba(123, 63, 255, 0.25);
-      box-shadow: 0 14px 30px rgba(59, 20, 120, 0.35);
+      box-shadow: 0 18px 38px rgba(59, 20, 120, 0.45);
       position: relative;
       overflow: hidden;
       animation: floatPulse 4s ease-in-out infinite;
@@ -219,7 +130,7 @@
     }
 
     .alexandra-photo-inner {
-      border-radius: 18px;
+      border-radius: 22px;
       overflow: hidden;
       position: relative;
     }
@@ -231,21 +142,65 @@
     }
 
     .alexandra-speech {
-      margin-top: 8px;
-      font-size: 0.78rem;
+      margin-top: 10px;
+      font-size: 0.8rem;
       color: var(--primary-dark);
       font-weight: 600;
       display: flex;
+      flex-direction: column;
+      gap: 4px;
       align-items: center;
-      gap: 6px;
     }
 
     .speech-badge {
       background: #fff;
       border-radius: 999px;
-      padding: 3px 9px;
+      padding: 4px 10px;
       border: 1px solid rgba(123, 63, 255, 0.25);
-      font-size: 0.75rem;
+      font-size: 0.76rem;
+    }
+
+    .speech-text {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+      color: var(--primary-dark);
+    }
+
+    .intro-subtitle {
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+      color: var(--text-soft);
+    }
+
+    .intro-highlight { font-weight: 600; color: var(--primary); }
+
+    .intro-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .intro-note {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      margin-bottom: 14px;
+    }
+
+    @media (min-width: 720px) {
+      .intro-title { font-size: 1.7rem; }
+      .intro-text  { font-size: 1rem; }
+      .intro-note  { font-size: 0.9rem; }
+    }
+
+    .intro-buttons {
+      display: flex;
+      justify-content: center;
     }
 
     .btn {
@@ -253,11 +208,11 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 10px 16px;
+      padding: 11px 18px;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       text-decoration: none;
       white-space: nowrap;
@@ -267,12 +222,12 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: #fff;
-      box-shadow: 0 8px 20px rgba(76, 43, 189, 0.55);
+      box-shadow: 0 10px 22px rgba(76, 43, 189, 0.7);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(76, 43, 189, 0.7);
+      box-shadow: 0 13px 28px rgba(76, 43, 189, 0.85);
     }
 
     .btn-soft {
@@ -286,8 +241,48 @@
       transform: translateY(-1px);
     }
 
-    /* TELA 2 */
+    /* ---------- TELA 2 ---------- */
+
     main { position: relative; z-index: 1; }
+
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      text-shadow: 0 3px 10px rgba(71, 32, 133, 0.4);
+    }
+
+    @media (min-width: 720px) {
+      header h1 { font-size: 2.2rem; }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      border: 1px solid rgba(123, 63, 255, 0.25);
+      margin-bottom: 6px;
+    }
+
+    header p.subtitle {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
 
     .layout {
       display: flex;
@@ -297,19 +292,39 @@
 
     @media (min-width: 880px) {
       .layout {
-        flex-direction: row;
-        align-items: stretch;
-        gap: 28px;
+        flex-direction: column; /* no desktop, ainda deixamos GIF em cima e texto embaixo para manter prioridade visual */
       }
     }
 
-    .layout-left, .layout-right { flex: 1; }
+    .hero {
+      border-radius: 20px;
+      background: radial-gradient(circle at top, #ffeef8, #f2e8ff);
+      padding: 12px 12px 16px;
+      border: 1px solid rgba(160, 123, 255, 0.4);
+      box-shadow: 0 18px 40px rgba(76, 43, 189, 0.55);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .hero-image-wrapper {
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .hero img { display: block; width: 100%; height: auto; }
 
     .invite-text-block {
       background: linear-gradient(135deg, #fdf6ff, #fff8f0);
       border-radius: 20px;
       padding: 16px 14px 16px;
       border: 1px solid rgba(124, 93, 255, 0.18);
+    }
+
+    @media (min-width: 720px) {
+      .invite-text-block { padding: 18px 18px 18px; }
     }
 
     .invite-text-block h2 {
@@ -360,26 +375,6 @@
       align-items: center;
     }
 
-    /* GIF CONVITE */
-    .hero {
-      border-radius: 20px;
-      background: radial-gradient(circle at top, #ffeef8, #f2e8ff);
-      padding: 12px 12px 16px;
-      border: 1px solid rgba(160, 123, 255, 0.4);
-      box-shadow: 0 18px 40px rgba(76, 43, 189, 0.55);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .hero-image-wrapper {
-      border-radius: 18px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .hero img { display: block; width: 100%; height: auto; }
-
     footer {
       margin-top: 12px;
       text-align: center;
@@ -388,6 +383,7 @@
     }
 
     /* BLOCO EXPANSÍVEL DE PRESENTES */
+
     .gift-details { margin-top: 10px; }
 
     .gift-details summary {
@@ -441,69 +437,80 @@
 </head>
 <body>
   <div class="page">
-    <!-- TELA 1 -->
+    <!-- ========== TELA 1 ========== -->
     <div id="intro-card" class="card">
       <div class="sparkles" aria-hidden="true"></div>
+
       <div class="intro-content">
         <div class="intro-tag">🌟 Convite especial só para você</div>
 
-        <div class="intro-layout">
-          <div class="intro-text-block">
-            <h2 class="intro-title">Você é muito importante pra mim!</h2>
-
-            <p class="intro-text">
-              Oi, eu sou a <span class="intro-highlight">Alexandra</span>! 🥰<br><br>
-              Se você está recebendo este link, é porque faz parte da minha história
-              e do meu coração.<br>
-              Eu quero muito que você venha viver esse dia mágico comigo!
-            </p>
-
-            <p class="intro-note">
-              Toque no botão abaixo para entrar na minha
-              <span class="intro-highlight">Casa Mágica</span> e ver o convite com todos os detalhes. ✨
-            </p>
-
-            <div class="intro-buttons">
-              <button id="seeInviteBtn" class="btn btn-primary">
-                ✨ Clique aqui para abrir o meu convite
-              </button>
-            </div>
+        <!-- FOTO DA ALEXANDRA EM DESTAQUE -->
+        <div class="alexandra-photo-card">
+          <div class="alexandra-photo-inner">
+            <img
+              src="Alexandra.png"
+              alt="Alexandra convidando você para a sua festa na Casa Mágica"
+              loading="lazy"
+            />
           </div>
-
-          <div class="alexandra-photo-card">
-            <div class="alexandra-photo-inner">
-              <img src="Alexandra.png"
-                   alt="Alexandra convidando você para a sua festa na Casa Mágica"
-                   loading="lazy" />
-            </div>
-            <div class="alexandra-speech">
-              <span class="speech-badge">Oi! 💜</span>
-              <span>Estou te esperando lá dentro, tá?</span>
-            </div>
+          <div class="alexandra-speech">
+            <span class="speech-badge">Alexandra • 4 anos ✨</span>
+            <span class="speech-text">Esse convite é todinho feito com carinho pra você.</span>
           </div>
+        </div>
+
+        <!-- TEXTO APÓS A FOTO -->
+        <h2 class="intro-title">Você é muito importante pra mim!</h2>
+        <p class="intro-subtitle">Oi, eu sou a <span class="intro-highlight">Alexandra</span>! 🥰</p>
+
+        <p class="intro-text">
+          Se você está recebendo este link, é porque faz parte da minha história
+          e do meu coração. Eu quero muito que você esteja comigo nesse dia
+          especial.
+        </p>
+
+        <p class="intro-note">
+          Toque no botão abaixo para entrar na minha
+          <span class="intro-highlight">Casa Mágica</span> e ver o convite completo da minha festa. ✨
+        </p>
+
+        <div class="intro-buttons">
+          <button id="seeInviteBtn" class="btn btn-primary">
+            ✨ Clique aqui para abrir o meu convite
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- TELA 2 -->
+    <!-- ========== TELA 2 ========== -->
     <div id="invite-card" class="card hidden">
       <div class="sparkles" aria-hidden="true"></div>
 
       <header>
         <div class="badge">✨ <span>Convite especial da Casa Mágica da Alexandra</span></div>
         <h1>Casa Mágica da Alexandra</h1>
-        <p class="subtitle">
-          Veja o convite animado e venha viver essa magia com a gente!
-        </p>
+        <!-- frase removida aqui para ficar mais limpo -->
       </header>
 
       <main>
         <div class="layout">
 
-          <!-- TEXTO DO CONVITE -->
-          <section class="layout-left">
-            <div class="invite-text-block">
+          <!-- 1) CONVITE ANIMADO PRIMEIRO -->
+          <section>
+            <div class="hero">
+              <div class="hero-image-wrapper">
+                <img
+                  src="convite-ale.gif.gif"
+                  alt="Convite animado da Casa Mágica da Alexandra"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </section>
 
+          <!-- 2) INFORMAÇÕES DA FESTA ABAIXO -->
+          <section>
+            <div class="invite-text-block">
               <h2>Você é meu convidado especial!</h2>
 
               <p>
@@ -522,9 +529,12 @@
               <p class="extras-title">Ah, e se você quiser…</p>
 
               <div class="buttons-row">
-                <a class="btn btn-primary"
-                   href="https://wa.me/5531992727195?text=Oi%20Alexandra!%20Quero%20confirmar%20a%20minha%20presen%C3%A7a%20na%20sua%20festa%20%F0%9F%92%9C%20%E2%9C%A8"
-                   target="_blank">
+                <a
+                  class="btn btn-primary"
+                  href="https://wa.me/5531992727195?text=Oi%20Alexandra!%20Quero%20confirmar%20a%20minha%20presen%C3%A7a%20na%20sua%20festa%20%F0%9F%92%9C%20%E2%9C%A8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   ✅ Confirmar presença
                 </a>
 
@@ -554,21 +564,8 @@
                   </div>
                 </details>
               </div>
-
             </div>
           </section>
-
-          <!-- GIF DO CONVITE -->
-          <section class="layout-right">
-            <div class="hero">
-              <div class="hero-image-wrapper">
-                <img src="convite-ale.gif.gif"
-                     alt="Convite animado da Casa Mágica da Alexandra"
-                     loading="lazy" />
-              </div>
-            </div>
-          </section>
-
         </div>
       </main>
 
@@ -580,9 +577,9 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const introCard = document.getElementById('intro-card');
+      const introCard  = document.getElementById('intro-card');
       const inviteCard = document.getElementById('invite-card');
-      const btn = document.getElementById('seeInviteBtn');
+      const btn        = document.getElementById('seeInviteBtn');
 
       btn.addEventListener('click', () => {
         introCard.classList.add('hidden');
