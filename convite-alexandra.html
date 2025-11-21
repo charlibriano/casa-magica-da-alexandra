@@ -433,6 +433,7 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 4px;
+      align-items: center;
     }
 
     /* BLOCO DIREITO – GIF DO CONVITE (DESTAQUE) */
@@ -506,66 +507,45 @@
       color: rgba(255, 255, 255, 0.82);
     }
 
-    /* MODAL LISTA DE PRESENTES */
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
+    /* BLOCO EXPANSÍVEL DE PRESENTES */
+    .gift-details {
+      margin-top: 10px;
+    }
+
+    .gift-details summary {
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .gift-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .gift-details summary.btn {
+      width: 100%;
       justify-content: center;
-      z-index: 40;
     }
 
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 8, 40, 0.6);
-      backdrop-filter: blur(4px);
-    }
-
-    .modal-card {
-      position: relative;
-      z-index: 1;
-      max-width: 410px;
-      width: calc(100% - 32px);
+    .gift-box {
+      margin-top: 10px;
       background: linear-gradient(145deg, #fff9ff, #f6ecff);
-      border-radius: 20px;
-      padding: 18px 16px 16px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-      animation: modalFadeUp 0.28s ease-out;
+      border-radius: 16px;
+      padding: 12px 12px 10px;
       border: 1px solid rgba(123, 63, 255, 0.25);
-    }
-
-    @keyframes modalFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .modal-title {
-      font-size: 1rem;
-      margin-bottom: 6px;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .modal-text {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--text-soft);
-      margin-bottom: 10px;
+    }
+
+    .gift-box p {
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
     .gift-list {
       list-style: none;
       padding-left: 0;
-      margin: 0 0 12px;
+      margin: 0 0 8px;
       font-size: 0.86rem;
       color: var(--text-soft);
     }
@@ -585,20 +565,9 @@
       margin-top: 4px;
     }
 
-    .modal-footnote {
+    .gift-footnote {
       font-size: 0.8rem;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .modal-actions {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .btn-close {
-      font-size: 0.85rem;
-      padding-inline: 14px;
+      margin-top: 2px;
     }
   </style>
 </head>
@@ -706,9 +675,6 @@
               </p>
 
               <div class="buttons-row">
-                <button type="button" id="giftListBtn" class="btn btn-soft">
-                  🎁 Ver sugestões de presentes
-                </button>
                 <a
                   class="btn btn-primary"
                   href="https://wa.me/5531992727195?text=Oi%20Alexandra!%20Quero%20confirmar%20a%20minha%20presen%C3%A7a%20na%20sua%20festa%20%F0%9F%92%9C%20%E2%9C%A8"
@@ -717,6 +683,47 @@
                 >
                   ✅ Confirmar presença
                 </a>
+
+                <!-- Bloco expansível de presentes -->
+                <details class="gift-details">
+                  <summary class="btn btn-soft">
+                    🎁 Ver sugestões de presentes (opcional)
+                  </summary>
+                  <div class="gift-box">
+                    <p>
+                      Se você quiser presentear, aqui vão algumas ideias que combinam com a minha idade
+                      e com esse momento especial. Mas o mais importante mesmo é a sua presença! 💜
+                    </p>
+
+                    <ul class="gift-list">
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Livrinhos de história ilustrados ou bíblia infantil.</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Jogos educativos ou brinquedos de montar (blocos, encaixe, quebra-cabeça simples).</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Material de arte: lápis de cor, giz de cera, massinha, cadernos de desenho.</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Bonecas, bichinhos de pelúcia ou personagens que estimulam a imaginação.</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Roupinhas confortáveis ou pijama fofinho tamanho 4 anos.</span>
+                      </li>
+                    </ul>
+
+                    <p class="gift-footnote">
+                      Fique à vontade para escolher o que desejar ou até vir sem presente:
+                      <strong>a sua presença já é um presente enorme pra mim!</strong> 🎈
+                    </p>
+                  </div>
+                </details>
               </div>
             </div>
           </section>
@@ -747,68 +754,11 @@
     </div>
   </div>
 
-  <!-- MODAL LISTA DE PRESENTES (COMEÇA ESCONDIDO) -->
-  <div id="gift-modal" class="modal hidden" aria-hidden="true">
-    <div id="giftModalBackdrop" class="modal-backdrop"></div>
-    <div class="modal-card">
-      <h3 class="modal-title">🎁 Sugestões de presentes</h3>
-      <p class="modal-text">
-        Se você quiser presentear, aqui vão algumas ideias que combinam com a minha idade
-        e com esse momento especial. Mas o mais importante mesmo é a sua presença! 💜
-      </p>
-
-      <ul class="gift-list">
-        <li>
-          <span class="gift-dot"></span>
-          <span>Livrinhos de história ilustrados ou bíblia infantil.</span>
-        </li>
-        <li>
-          <span class="gift-dot"></span>
-          <span>Jogos educativos ou brinquedos de montar (blocos, encaixe, quebra-cabeça simples).</span>
-        </li>
-        <li>
-          <span class="gift-dot"></span>
-          <span>Material de arte: lápis de cor, giz de cera, massinha, cadernos de desenho.</span>
-        </li>
-        <li>
-          <span class="gift-dot"></span>
-          <span>Bonecas, bichinhos de pelúcia ou personagens que estimulam a imaginação.</span>
-        </li>
-        <li>
-          <span class="gift-dot"></span>
-          <span>Roupinhas confortáveis ou pijama fofinho tamanho 4 anos.</span>
-        </li>
-      </ul>
-
-      <p class="modal-footnote">
-        Fique à vontade para escolher o que desejar ou até vir sem presente:
-        <strong>a sua presença já é um presente enorme pra mim!</strong> 🎈
-      </p>
-
-      <div class="modal-actions">
-        <button id="closeGiftModal" class="btn btn-soft btn-close">
-          Fechar
-        </button>
-      </div>
-    </div>
-  </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var introCard = document.getElementById('intro-card');
       var inviteCard = document.getElementById('invite-card');
       var seeInviteBtn = document.getElementById('seeInviteBtn');
-
-      var giftBtn = document.getElementById('giftListBtn');
-      var giftModal = document.getElementById('gift-modal');
-      var closeGiftBtn = document.getElementById('closeGiftModal');
-      var giftBackdrop = document.getElementById('giftModalBackdrop');
-
-      // Garante que o modal começa escondido
-      if (giftModal) {
-        giftModal.classList.add('hidden');
-        giftModal.setAttribute('aria-hidden', 'true');
-      }
 
       if (seeInviteBtn && introCard && inviteCard) {
         seeInviteBtn.addEventListener('click', function () {
@@ -816,27 +766,6 @@
           inviteCard.classList.remove('hidden');
           inviteCard.classList.add('fade-in');
         });
-      }
-
-      function closeGiftModal() {
-        if (!giftModal) return;
-        giftModal.classList.add('hidden');
-        giftModal.setAttribute('aria-hidden', 'true');
-      }
-
-      if (giftBtn && giftModal) {
-        giftBtn.addEventListener('click', function () {
-          giftModal.classList.remove('hidden');
-          giftModal.setAttribute('aria-hidden', 'false');
-        });
-      }
-
-      if (closeGiftBtn) {
-        closeGiftBtn.addEventListener('click', closeGiftModal);
-      }
-
-      if (giftBackdrop) {
-        giftBackdrop.addEventListener('click', closeGiftModal);
       }
     });
   </script>
