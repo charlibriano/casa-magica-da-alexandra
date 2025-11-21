@@ -1,654 +1,174 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Casa Mágica da Alexandra - Convite</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta name="description" content="Você foi convidado para entrar na Casa Mágica da Alexandra! Abra o convite animado e venha viver essa magia com a gente.">
-  <meta property="og:title" content="Casa Mágica da Alexandra - Convite" />
-  <meta property="og:description" content="Convite especial para um momento mágico com a Alexandra." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://charlibriano.github.io/casa-magica-da-alexandra/convite-alexandra.html" />
-  <meta property="og:image" content="https://charlibriano.github.io/casa-magica-da-alexandra/convite-ale.gif.gif" />
-
-  <style>
-    :root {
-      --bg-gradient: radial-gradient(circle at top, #ffddff 0, #b694ff 35%, #4a2d84 100%);
-      --card-bg: rgba(255, 255, 255, 0.96);
-      --primary: #7b3fff;
-      --primary-dark: #5c27d6;
-      --accent: #ffbb39;
-      --text-main: #2b2140;
-      --text-soft: #5e4e7f;
-      --radius-xl: 24px;
-      --shadow-soft: 0 18px 45px rgba(16, 0, 62, 0.35);
-      --transition-fast: 0.25s ease-out;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    /* esconde o player, música só em segundo plano */
-    audio { display: none; }
-
-    .page { width: 100%; max-width: 1040px; margin: auto; }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-soft);
-      padding: 22px 18px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    @media (min-width: 720px) {
-      .card { padding: 28px 32px 30px; }
-    }
-
-    .sparkles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.6;
-      mix-blend-mode: screen;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.7) 0, transparent 50%),
-        radial-gradient(circle at 80% 10%, rgba(255,255,255,0.6) 0, transparent 55%),
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.5) 0, transparent 55%),
-        radial-gradient(circle at 90% 70%, rgba(255,255,255,0.55) 0, transparent 50%);
-      animation: floatSparkles 12s linear infinite alternate;
-    }
-
-    @keyframes floatSparkles {
-      0% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(0, -8px, 0); }
-      100% { transform: translate3d(0, 4px, 0); }
-    }
-
-    .hidden { display: none; }
-
-    .fade-in {
-      animation: fadeIn var(--transition-fast) forwards;
-      opacity: 0;
-      transform: translateY(6px);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ---------- TELA 1 ---------- */
-
-    .intro-content {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .intro-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 11px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(123, 63, 255, 0.25);
-      font-size: 0.82rem;
-      color: var(--text-soft);
-      margin-bottom: 14px;
-    }
-
-    .alexandra-photo-card {
-      max-width: 320px;
-      width: 100%;
-      margin: 0 auto 18px;
-      background: transparent;
-      border-radius: 0;
-      padding: 0;
-      border: none;
-      box-shadow: none;
-      position: relative;
-    }
-
-    .alexandra-photo-inner {
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 18px 38px rgba(59, 20, 120, 0.45);
-    }
-
-    .alexandra-photo-card img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .alexandra-speech {
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: var(--primary-dark);
-      font-weight: 600;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: center;
-    }
-
-    .speech-badge {
-      background: #fff;
-      border-radius: 999px;
-      padding: 6px 16px;
-      border: 1px solid rgba(123, 63, 255, 0.3);
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .speech-text {
-      font-size: 0.78rem;
-      color: var(--text-soft);
-    }
-
-    .intro-text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .intro-strong {
-      display: inline-block;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-
-    .intro-note {
-      font-size: 0.86rem;
-      color: var(--text-soft);
-      margin-bottom: 14px;
-    }
-
-    @media (min-width: 720px) {
-      .intro-text  { font-size: 1rem; }
-      .intro-note  { font-size: 0.9rem; }
-    }
-
-    .intro-buttons {
-      display: flex;
-      justify-content: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 11px 18px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.92rem;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      box-shadow: 0 10px 22px rgba(76, 43, 189, 0.7);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 13px 28px rgba(76, 43, 189, 0.85);
-    }
-
-    .btn-soft {
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--primary-dark);
-      border: 1px solid rgba(123, 63, 255, 0.28);
-    }
-
-    .btn-soft:hover {
-      background: #fff;
-      transform: translateY(-1px);
-    }
-
-    /* ---------- TELA 2 ---------- */
-
-    main { position: relative; z-index: 1; }
-
-    header {
-      text-align: center;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    header h1 {
-      font-size: 1.9rem;
-      line-height: 1.1;
-      margin-bottom: 6px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--primary-dark);
-      text-shadow: 0 3px 10px rgba(71, 32, 133, 0.4);
-    }
-
-    @media (min-width: 720px) {
-      header h1 { font-size: 2.2rem; }
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 999px;
-      padding: 4px 12px;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-      border: 1px solid rgba(123, 63, 255, 0.25);
-      margin-bottom: 6px;
-    }
-
-    .layout {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .hero {
-      border-radius: 20px;
-      background: radial-gradient(circle at top, #ffeef8, #f2e8ff);
-      padding: 12px 12px 16px;
-      border: 1px solid rgba(160, 123, 255, 0.4);
-      box-shadow: 0 18px 40px rgba(76, 43, 189, 0.55);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .hero-image-wrapper {
-      border-radius: 18px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .hero img { display: block; width: 100%; height: auto; }
-
-    .invite-text-block {
-      background: linear-gradient(135deg, #fdf6ff, #fff8f0);
-      border-radius: 20px;
-      padding: 16px 14px 16px;
-      border: 1px solid rgba(124, 93, 255, 0.18);
-    }
-
-    @media (min-width: 720px) {
-      .invite-text-block { padding: 18px 18px 18px; }
-    }
-
-    .invite-text-block h2 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      color: var(--primary-dark);
-      text-align: center;
-    }
-
-    .invite-text-block p {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .info-list {
-      list-style: none;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .info-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .info-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 2px rgba(255, 187, 57, 0.35);
-    }
-
-    .extras-title {
-      font-size: 0.86rem;
-      color: var(--text-soft);
-      margin: 8px 0 6px;
-    }
-
-    .buttons-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    footer {
-      margin-top: 12px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.82);
-    }
-
-    /* BLOCO EXPANSÍVEL DE PRESENTES */
-
-    .gift-details { margin-top: 10px; }
-
-    .gift-details summary {
-      list-style: none;
-      cursor: pointer;
-    }
-
-    .gift-details summary::-webkit-details-marker { display: none; }
-
-    .gift-details summary.btn { justify-content: center; }
-
-    .gift-box {
-      margin-top: 10px;
-      background: #fff9ff;
-      border-radius: 16px;
-      padding: 12px 12px 10px;
-      border: 1px solid rgba(123, 63, 255, 0.25);
-      font-size: 0.86rem;
-      color: var(--text-soft);
-    }
-
-    .gift-box p { margin-bottom: 8px; }
-
-    .gift-section-title {
-      font-weight: 700;
-      color: var(--primary-dark);
-      font-size: 0.86rem;
-      margin: 6px 0 4px;
-    }
-
-    .gift-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0 0 6px;
-      font-size: 0.86rem;
-    }
-
-    .gift-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 5px;
-    }
-
-    .gift-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--primary);
-      margin-top: 4px;
-    }
-
-    .gift-footnote {
-      font-size: 0.8rem;
-      margin-top: 4px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Casa Mágica da Alexandra - Convite</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta name="description" content="Você foi convidado para entrar na Casa Mágica da Alexandra! Abra o convite animado e venha viver essa magia com a gente.">
+<meta property="og:title" content="Casa Mágica da Alexandra - Convite" />
+<meta property="og:description" content="Convite especial para um momento mágico com a Alexandra." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://charlibriano.github.io/casa-magica-da-alexandra/convite-alexandra.html" />
+<meta property="og:image" content="https://charlibriano.github.io/casa-magica-da-alexandra/convite-ale.gif.gif" />
+
+<style>
+/* estilos reduzidos para caber */
+body { font-family: sans-serif; background: #e8d8ff; padding: 20px; }
+.card { background: #fff; padding: 20px; border-radius: 20px; max-width: 900px; margin: auto; }
+.hidden{display:none}
+.btn{padding:10px 18px;border-radius:30px;cursor:pointer;border:none;font-weight:bold}
+.btn-primary{background:#7b3fff;color:#fff}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6)}
+.modal.hidden{display:none}
+.modal-dialog{background:#fff;padding:20px;border-radius:20px;max-width:340px;width:90%}
+input{width:100%;padding:10px;border-radius:30px;border:1px solid #aaa}
+</style>
 </head>
+
 <body>
-  <!-- áudio escondido: a música só vai tocar quando clicar no botão do convite -->
-  <audio
-    id="bg-music"
-    src="musica%20casa%20magica.mp3"
-    preload="auto"
-    loop
-    playsinline
-  ></audio>
 
-  <div class="page">
-    <!-- ========== TELA 1 ========== -->
-    <div id="intro-card" class="card">
-      <div class="sparkles" aria-hidden="true"></div>
+<audio id="bg-music" src="musica%20casa%20magica.mp3" preload="auto" loop playsinline></audio>
 
-      <div class="intro-content">
-        <div class="intro-tag">🌟 Convite especial só para você</div>
+<div id="intro-card" class="card">
+  <h2>🌟 Convite especial só para você</h2>
 
-        <!-- FOTO DA ALEXANDRA -->
-        <div class="alexandra-photo-card">
-          <div class="alexandra-photo-inner">
-            <img
-              src="Alexandra.png"
-              alt="Alexandra convidando você para a sua festa na Casa Mágica"
-              loading="lazy"
-            />
-          </div>
-          <div class="alexandra-speech">
-            <span class="speech-badge">Alexandra • 4 anos ✨</span>
-            <span class="speech-text">Preparei algo muito especial pra dividir com você.</span>
-          </div>
-        </div>
+  <img src="Alexandra.png" style="width:100%;border-radius:20px;margin-bottom:10px" />
 
-        <!-- TEXTO PRINCIPAL -->
-        <p class="intro-text">
-          <span class="intro-strong">
-            Eu escolhi você para compartilhar esse momento mágico comigo… porque você faz parte da minha alegria.
-          </span>
-          <br />
-          Eu quero muito que você esteja comigo nesse dia especial.
-        </p>
+  <h3 style="text-align:center;font-size:1.4rem;color:#5c27d6">Alexandra • 4 anos ✨</h3>
 
-        <p class="intro-note">
-          Toque no botão abaixo para entrar na minha
-          <span class="intro-strong" style="font-weight:600; color:var(--primary);">Casa Mágica</span>
-          e ver o convite completo da minha festa. ✨
-        </p>
+  <p>
+    <strong>Eu escolhi você para compartilhar esse momento mágico comigo… porque você faz parte da minha alegria.</strong><br>
+    Eu quero muito que você esteja comigo nesse dia especial.
+  </p>
 
-        <div class="intro-buttons">
-          <button id="seeInviteBtn" class="btn btn-primary">
-            ✨ Clique aqui para abrir o meu convite
-          </button>
-        </div>
-      </div>
+  <p>Toque no botão abaixo para entrar na minha <strong>Casa Mágica</strong> ✨</p>
+
+  <button id="seeInviteBtn" class="btn btn-primary" style="width:100%;margin-top:10px">
+    ✨ Clique aqui para abrir o meu convite
+  </button>
+</div>
+
+<div id="invite-card" class="card hidden">
+  <h1 style="text-align:center;color:#5c27d6">Casa Mágica da Alexandra</h1>
+
+  <img src="convite-ale.gif.gif" style="width:100%;border-radius:20px;margin:10px 0">
+
+  <h2 style="text-align:center;color:#5c27d6">Você é meu convidado especial!</h2>
+
+  <ul style="line-height:1.6">
+    <li><strong>Data:</strong> 06 de dezembro</li>
+    <li><strong>Horário:</strong> a partir das 18h30</li>
+    <li><strong>Endereço:</strong> Rua Martinez Camelo de Souza, 378 – Novo Tupi</li>
+  </ul>
+
+  <p><strong>Ah, e se você quiser…</strong></p>
+
+  <button id="confirmPresenceBtn" class="btn btn-primary">Confirmar presença</button>
+
+  <details style="margin-top:10px">
+    <summary class="btn" style="background:#eee">🎁 Ver sugestões de presentes</summary>
+
+    <div style="margin-top:10px;line-height:1.5">
+      <p>Se você quiser me presentear, aqui vão algumas ideias… mas sua presença já é um presente pra mim!</p>
+
+      <h3>👗 Roupas & calçados</h3>
+      <ul>
+        <li>Vestidos rodados e coloridos — tamanho 4 anos</li>
+        <li>Calçados — tamanho 25/26</li>
+      </ul>
+
+      <h3>🎨 Arte & criatividade</h3>
+      <ul>
+        <li>Livrinhos, bíblia infantil</li>
+        <li>Olhos malucos, pompom, glitter, tinta…</li>
+      </ul>
+
+      <h3>🍿 Cozinha & brincadeira</h3>
+      <ul>
+        <li>Eu gostaria muito de ter uma <strong>pipoqueira de verdade</strong> e uma <strong>máquina de donuts de verdade</strong> (não são de brinquedo!)… porque eu amo cozinhar de verdade também! 😋</li>
+      </ul>
+
+      <h3>🧸 Bonecas & detalhes</h3>
+      <ul>
+        <li>Jaleco de médica</li>
+        <li>Roupinhas e sapatinhos de boneca</li>
+        <li>Brinco de pressão</li>
+        <li>Pins para Crocs</li>
+      </ul>
     </div>
+  </details>
+</div>
 
-    <!-- ========== TELA 2 ========== -->
-    <div id="invite-card" class="card hidden">
-      <div class="sparkles" aria-hidden="true"></div>
-
-      <header>
-        <div class="badge">✨ <span>Convite especial da Casa Mágica da Alexandra</span></div>
-        <h1>Casa Mágica da Alexandra</h1>
-      </header>
-
-      <main>
-        <div class="layout">
-
-          <!-- CONVITE ANIMADO -->
-          <section>
-            <div class="hero">
-              <div class="hero-image-wrapper">
-                <img
-                  src="convite-ale.gif.gif"
-                  alt="Convite animado da Casa Mágica da Alexandra"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </section>
-
-          <!-- INFORMAÇÕES -->
-          <section>
-            <div class="invite-text-block">
-              <h2>Você é meu convidado especial!</h2>
-
-              <p>
-                A Casa Mágica da Alexandra abre as portas para um dia cheio de sorrisos,
-                aventuras e abraços apertados. 💜
-              </p>
-
-              <ul class="info-list">
-                <li><span class="info-dot"></span><span><strong>Data:</strong> 06 de dezembro</span></li>
-                <li><span class="info-dot"></span><span><strong>Horário:</strong> a partir das 15h</span></li>
-                <li><span class="info-dot"></span><span><strong>Endereço:</strong> Rua Martinez Camelo de Souza, 378 – Novo Tupi</span></li>
-              </ul>
-
-              <p class="extras-title">Ah, e se você quiser…</p>
-
-              <div class="buttons-row">
-                <a
-                  class="btn btn-primary"
-                  href="https://wa.me/5531992727195?text=Oi%20Alexandra!%20Quero%20confirmar%20a%20minha%20presen%C3%A7a%20na%20sua%20festa%20%F0%9F%92%9C%20%E2%9C%A8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  ✅ Confirmar presença
-                </a>
-
-                <details class="gift-details">
-                  <summary class="btn btn-soft">🎁 Ver sugestões de presentes (opcional)</summary>
-
-                  <div class="gift-box">
-                    <p>
-                      Se você quiser me presentear, aqui vão algumas ideias que combinam comigo.
-                      Mas o mais importante de tudo é ter você lá comigo! 💜
-                    </p>
-
-                    <div class="gift-section-title">👗 Roupas & calçados</div>
-                    <ul class="gift-list">
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Amo vestidos rodados e coloridos, e conjuntos de short e camiseta, tamanho 4 anos.</span>
-                      </li>
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Calçados tamanho <strong>25/26</strong>.</span>
-                      </li>
-                    </ul>
-
-                    <div class="gift-section-title">🎨 Arte & criatividade</div>
-                    <ul class="gift-list">
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Livrinhos de história ilustrados ou bíblia infantil.</span>
-                      </li>
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Material de arte: olhos malucos, pompom, tinta, glitter, massinha, lápis de cor…</span>
-                      </li>
-                    </ul>
-
-                    <div class="gift-section-title">🍿 Cozinha & brincadeira</div>
-                    <ul class="gift-list">
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>
-                          Eu gostaria muito de ter uma <strong>pipoqueira de verdade</strong> e uma
-                          <strong>máquina de donuts de verdade</strong> (não são de brinquedo!)…
-                          porque eu amo cozinhar de verdade também! 😋
-                        </span>
-                      </li>
-                    </ul>
-
-                    <div class="gift-section-title">🧸 Bonecas & detalhes especiais</div>
-                    <ul class="gift-list">
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>
-                          Para cuidar das bonecas e bichinhos, eu queria muito um <strong>jaleco de médica</strong>.
-                        </span>
-                      </li>
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Roupinhas e sapatinhos para boneca.</span>
-                      </li>
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Brinco de pressão (infantil).</span>
-                      </li>
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Botons / Pins para Crocs.</span>
-                      </li>
-                      <li>
-                        <span class="gift-dot"></span>
-                        <span>Bonecas e pelúcias eu já tenho bastante! 😅🤣</span>
-                      </li>
-                    </ul>
-
-                    <p class="gift-footnote">
-                      Fique totalmente à vontade para escolher o que desejar ou até vir sem presente:
-                      <strong>a sua presença já é um presente enorme pra mim!</strong> 🎈
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-
-      <footer>
-        Casa Mágica da Alexandra • Convite digital
-      </footer>
-    </div>
+<!-- MODAL -->
+<div id="confirm-modal" class="modal hidden">
+  <div class="modal-dialog">
+    <h3 style="text-align:center;color:#5c27d6">Confirmar presença</h3>
+    <p style="text-align:center">Digite seu nome para eu saber quem confirmou 💜</p>
+    <input id="guestName" placeholder="Seu nome">
+    <button id="sendConfirm" class="btn btn-primary" style="width:100%;margin-top:12px">Enviar pelo WhatsApp</button>
+    <button data-close class="btn" style="width:100%;margin-top:6px;background:#eee">Cancelar</button>
   </div>
+</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const introCard  = document.getElementById('intro-card');
-      const inviteCard = document.getElementById('invite-card');
-      const btn        = document.getElementById('seeInviteBtn');
-      const audio      = document.getElementById('bg-music');
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCT1btbLIMehCj3xldw5LOB-snjyF4SKhw",
+  authDomain: "ranking-cbjr.firebaseapp.com",
+  databaseURL: "https://ranking-cbjr-default-rtdb.firebaseio.com",
+  projectId: "ranking-cbjr",
+  storageBucket: "ranking-cbjr.firebasestorage.app",
+  messagingSenderId: "681180179118",
+  appId: "1:681180179118:web:fe10833848e8bb8194db3f",
+  measurementId: "G-QK5QE2Y1CC"
+};
 
-      if (btn) {
-        btn.addEventListener('click', () => {
-          // troca de tela
-          introCard.classList.add('hidden');
-          inviteCard.classList.remove('hidden');
-          inviteCard.classList.add('fade-in');
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+</script>
 
-          // tenta tocar a música no clique (gesto do usuário)
-          if (audio) {
-            audio.currentTime = 0;
-            audio.play().catch(() => {
-              // se ainda assim não tocar, o navegador bloqueou mesmo assim
-            });
-          }
-        });
-      }
-    });
-  </script>
+<script>
+const introCard = document.getElementById("intro-card");
+const inviteCard = document.getElementById("invite-card");
+const seeBtn = document.getElementById("seeInviteBtn");
+const audio = document.getElementById("bg-music");
+
+seeBtn.onclick = () => {
+  introCard.classList.add("hidden");
+  inviteCard.classList.remove("hidden");
+  audio.play().catch(()=>{});
+};
+
+const confirmBtn = document.getElementById("confirmPresenceBtn");
+const modal = document.getElementById("confirm-modal");
+const input = document.getElementById("guestName");
+const send = document.getElementById("sendConfirm");
+
+confirmBtn.onclick = () => {
+  modal.classList.remove("hidden");
+  input.value = "";
+  input.focus();
+};
+
+document.querySelector("[data-close]").onclick = () => modal.classList.add("hidden");
+
+send.onclick = () => {
+  const nome = input.value.trim();
+  if(!nome) return input.style.border="2px solid red";
+
+  db.ref("confirmacoes").push({
+    nome,
+    createdAt: new Date().toISOString()
+  });
+
+  const msg = encodeURIComponent(`Oi Alexandra! Meu nome é ${nome} e quero confirmar presença na sua festa 💜✨`);
+  window.open(`https://wa.me/5531992727195?text=${msg}`);
+  modal.classList.add("hidden");
+};
+</script>
 
 </body>
 </html>
