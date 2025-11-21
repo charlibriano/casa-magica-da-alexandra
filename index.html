@@ -1,71 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Convite Animado da Alexandra</title>
+  <meta charset="UTF-8" />
+  <title>Casa Mágica da Alexandra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
+  <!-- Redireciona automaticamente para o convite -->
+  <meta http-equiv="refresh" content="0; url=convite-alexandra.html" />
+
+  <style>
     body {
-        margin: 0;
-        padding: 0;
-        background: #fff;
-        font-family: Arial, sans-serif;
-        text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+      background: radial-gradient(circle at top, #ffddff 0, #b694ff 35%, #4a2d84 100%);
+      color: #fff;
+      text-align: center;
+      padding: 16px;
     }
-
-    .container {
-        max-width: 700px;
-        margin: auto;
-        padding: 20px;
+    .msg {
+      max-width: 420px;
     }
-
-    img {
-        width: 100%;
-        border-radius: 12px;
+    .msg h1 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
     }
-
-    .btn {
-        display: block;
-        margin: 20px auto;
-        padding: 15px 20px;
-        background: #ff75c9;
-        color: white;
-        border-radius: 12px;
-        font-size: 20px;
-        text-decoration: none;
-        font-weight: bold;
-        width: 90%;
-        max-width: 300px;
-        transition: 0.3s;
+    .msg p {
+      font-size: 0.95rem;
+      opacity: 0.9;
     }
-
-    .btn:hover {
-        background: #ff4db7;
-        transform: scale(1.05);
+    .msg a {
+      color: #ffe57f;
+      font-weight: 600;
+      text-decoration: underline;
     }
-</style>
-
+  </style>
 </head>
 <body>
+  <div class="msg">
+    <h1>Redirecionando para o convite da Alexandra… ✨</h1>
+    <p>
+      Se não abrir automaticamente, toque aqui:
+      <a href="convite-alexandra.html">abrir convite</a>
+    </p>
+  </div>
 
-<div class="container">
-    <h1>🎉 Convite Animado da Alexandra 🎉</h1>
-
-    <img src="convite-ale.gif.gif" alt="Convite Animado">
-
-    <a class="btn" href="convite-ale.gif.gif" download>
-        📥 Baixar GIF do Convite
-    </a>
-
-    <a class="btn" href="convite-alexandra.html">
-        👉 Ver Convite Completo
-    </a>
-
-    <a class="btn" href="qr-convite-alexandra.png" download>
-        🔳 Baixar QR Code
-    </a>
-</div>
-
+  <script>
+    // Garantir redirecionamento também via JS
+    setTimeout(function () {
+      window.location.href = "convite-alexandra.html";
+    }, 0);
+  </script>
 </body>
 </html>
