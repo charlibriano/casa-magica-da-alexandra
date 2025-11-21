@@ -111,12 +111,12 @@
     }
 
     .alexandra-photo-card {
-      max-width: 300px;
+      max-width: 320px;
       width: 100%;
-      margin: 0 auto 16px;
+      margin: 0 auto 18px;
       background: radial-gradient(circle at top, #ffe9ff, #f3e7ff);
-      border-radius: 26px;
-      padding: 10px 10px 12px;
+      border-radius: 28px;
+      padding: 10px 10px 14px;
       border: 1px solid rgba(123, 63, 255, 0.25);
       box-shadow: 0 18px 38px rgba(59, 20, 120, 0.45);
       position: relative;
@@ -131,7 +131,7 @@
     }
 
     .alexandra-photo-inner {
-      border-radius: 20px;
+      border-radius: 22px;
       overflow: hidden;
       position: relative;
     }
@@ -156,9 +156,12 @@
     .speech-badge {
       background: #fff;
       border-radius: 999px;
-      padding: 4px 10px;
-      border: 1px solid rgba(123, 63, 255, 0.25);
-      font-size: 0.76rem;
+      padding: 5px 14px;
+      border: 1px solid rgba(123, 63, 255, 0.3);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 0.03em;
     }
 
     .speech-text {
@@ -294,7 +297,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     .hero-image-wrapper {
@@ -304,6 +307,29 @@
     }
 
     .hero img { display: block; width: 100%; height: auto; }
+
+    .music-box {
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 16px;
+      padding: 10px 12px;
+      border: 1px solid rgba(123, 63, 255, 0.2);
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .music-box strong {
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+    }
+
+    .music-box audio {
+      width: 100%;
+      outline: none;
+    }
 
     .invite-text-block {
       background: linear-gradient(135deg, #fdf6ff, #fff8f0);
@@ -398,10 +424,17 @@
 
     .gift-box p { margin-bottom: 8px; }
 
+    .gift-section-title {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 0.86rem;
+      margin: 6px 0 4px;
+    }
+
     .gift-list {
       list-style: none;
       padding-left: 0;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       font-size: 0.86rem;
     }
 
@@ -409,7 +442,7 @@
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .gift-dot {
@@ -422,7 +455,7 @@
 
     .gift-footnote {
       font-size: 0.8rem;
-      margin-top: 2px;
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -486,7 +519,7 @@
       <main>
         <div class="layout">
 
-          <!-- 1) CONVITE ANIMADO PRIMEIRO -->
+          <!-- 1) CONVITE ANIMADO + MÚSICA -->
           <section>
             <div class="hero">
               <div class="hero-image-wrapper">
@@ -497,6 +530,15 @@
                 />
               </div>
             </div>
+
+            <div class="music-box">
+              <strong>🎵 Música da Casa Mágica</strong>
+              <span>Se quiser, dá o play pra entrar ainda mais no clima do convite.</span>
+              <audio controls>
+                <source src="musica casa magica.mp3" type="audio/mpeg">
+                Seu navegador não suporta áudio.
+              </audio>
+            </div>
           </section>
 
           <!-- 2) INFORMAÇÕES DA FESTA ABAIXO -->
@@ -505,8 +547,7 @@
               <h2>Você é meu convidado especial!</h2>
 
               <p>
-                Tem festa, tem alegria e tem muita imaginação esperando por você.
-                A Casa Mágica abre as portas para um dia cheio de sorrisos,
+                A Casa Mágica da Alexandra abre as portas para um dia cheio de sorrisos,
                 aventuras e abraços apertados. 💜
               </p>
 
@@ -535,20 +576,75 @@
 
                   <div class="gift-box">
                     <p>
-                      Se você quiser presentear, aqui vão algumas ideias que combinam com a minha idade
-                      e com esse momento especial. Mas o mais importante mesmo é a sua presença! 💜
+                      Se você quiser me presentear, aqui vão algumas ideias que combinam comigo
+                      e com esse momento especial. Mas o mais importante de tudo é ter você lá comigo! 💜
                     </p>
 
+                    <div class="gift-section-title">👗 Roupas & calçados</div>
                     <ul class="gift-list">
-                      <li><span class="gift-dot"></span><span>Livrinhos de história ilustrados ou bíblia infantil.</span></li>
-                      <li><span class="gift-dot"></span><span>Jogos educativos ou brinquedos de montar (blocos, encaixe, quebra-cabeça simples).</span></li>
-                      <li><span class="gift-dot"></span><span>Material de arte: lápis de cor, giz de cera, massinha, cadernos de desenho.</span></li>
-                      <li><span class="gift-dot"></span><span>Bonecas, bichinhos de pelúcia ou personagens que estimulam a imaginação.</span></li>
-                      <li><span class="gift-dot"></span><span>Roupinhas confortáveis ou pijama fofinho tamanho 4 anos.</span></li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Amo vestidos rodados e coloridos, e conjuntos de short e camiseta, tudo tamanho 4 anos.</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Calçados número <strong>25/26</strong>.</span>
+                      </li>
+                    </ul>
+
+                    <div class="gift-section-title">🎨 Arte & criatividade</div>
+                    <ul class="gift-list">
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Livrinhos de história ilustrados ou bíblia infantil.</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Material de arte: lápis de cor, giz de cera, massinha, cadernos de desenho, olhos malucos, pompom, tinta, glitter… tudo que solta a imaginação!</span>
+                      </li>
+                    </ul>
+
+                    <div class="gift-section-title">🍿 Cozinha & brincadeira</div>
+                    <ul class="gift-list">
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Ela me pediu <strong>pipoqueira</strong> e <strong>máquina de donuts</strong>… a Alexandra também é cozinheira! 😋</span>
+                      </li>
+                    </ul>
+
+                    <div class="gift-section-title">🧸 Bonecas & detalhes especiais</div>
+                    <ul class="gift-list">
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>
+                          Para cuidar das bonecas e bichinhos, eu queria muito um
+                          <strong>jaleco de médica</strong>.
+                        </span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>
+                          Coisas pra bonecas, como roupinhas e sapatinhos.
+                        </span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Brinco de pressão (infantil).</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>Botons / pins para Crocs.</span>
+                      </li>
+                      <li>
+                        <span class="gift-dot"></span>
+                        <span>
+                          Bonecas e bichinhos de pelúcia eu já tenho bastante, então não preciso de mais por enquanto. 😅🤣
+                        </span>
+                      </li>
                     </ul>
 
                     <p class="gift-footnote">
-                      Fique à vontade para escolher o que desejar ou até vir sem presente:
+                      Fique totalmente à vontade para escolher o que desejar ou até vir sem presente:
                       <strong>a sua presença já é um presente enorme pra mim!</strong> 🎈
                     </p>
                   </div>
@@ -571,11 +667,13 @@
       const inviteCard = document.getElementById('invite-card');
       const btn        = document.getElementById('seeInviteBtn');
 
-      btn.addEventListener('click', () => {
-        introCard.classList.add('hidden');
-        inviteCard.classList.remove('hidden');
-        inviteCard.classList.add('fade-in');
-      });
+      if (btn) {
+        btn.addEventListener('click', () => {
+          introCard.classList.add('hidden');
+          inviteCard.classList.remove('hidden');
+          inviteCard.classList.add('fade-in');
+        });
+      }
     });
   </script>
 </body>
