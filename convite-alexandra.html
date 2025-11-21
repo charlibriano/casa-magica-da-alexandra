@@ -39,6 +39,8 @@
       padding: 16px;
     }
 
+    audio { display: none; }
+
     .page { width: 100%; max-width: 1040px; margin: auto; }
 
     .card {
@@ -114,26 +116,19 @@
       max-width: 320px;
       width: 100%;
       margin: 0 auto 18px;
-      background: radial-gradient(circle at top, #ffe9ff, #f3e7ff);
-      border-radius: 28px;
-      padding: 10px 10px 14px;
-      border: 1px solid rgba(123, 63, 255, 0.25);
-      box-shadow: 0 18px 38px rgba(59, 20, 120, 0.45);
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      border: none;
+      box-shadow: none;
       position: relative;
-      overflow: hidden;
-      animation: floatPulse 4s ease-in-out infinite;
-    }
-
-    @keyframes floatPulse {
-      0% { transform: translateY(0) scale(1); }
-      50%{ transform: translateY(-6px) scale(1.02); }
-      100%{transform: translateY(0) scale(1); }
     }
 
     .alexandra-photo-inner {
-      border-radius: 22px;
+      border-radius: 24px;
       overflow: hidden;
       position: relative;
+      box-shadow: 0 18px 38px rgba(59, 20, 120, 0.45);
     }
 
     .alexandra-photo-card img {
@@ -156,12 +151,13 @@
     .speech-badge {
       background: #fff;
       border-radius: 999px;
-      padding: 5px 14px;
+      padding: 6px 16px;
       border: 1px solid rgba(123, 63, 255, 0.3);
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 1rem;
+      font-weight: 800;
       color: var(--primary-dark);
       letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     .speech-text {
@@ -308,29 +304,6 @@
 
     .hero img { display: block; width: 100%; height: auto; }
 
-    .music-box {
-      margin-top: 8px;
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 16px;
-      padding: 10px 12px;
-      border: 1px solid rgba(123, 63, 255, 0.2);
-      font-size: 0.86rem;
-      color: var(--text-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .music-box strong {
-      color: var(--primary-dark);
-      font-size: 0.9rem;
-    }
-
-    .music-box audio {
-      width: 100%;
-      outline: none;
-    }
-
     .invite-text-block {
       background: linear-gradient(135deg, #fdf6ff, #fff8f0);
       border-radius: 20px;
@@ -460,6 +433,9 @@
   </style>
 </head>
 <body>
+  <!-- áudio escondido, tenta tocar ao abrir a página -->
+  <audio id="bg-music" src="musica%20casa%20magica.mp3" preload="auto"></audio>
+
   <div class="page">
     <!-- ========== TELA 1 ========== -->
     <div id="intro-card" class="card">
@@ -519,7 +495,7 @@
       <main>
         <div class="layout">
 
-          <!-- 1) CONVITE ANIMADO + MÚSICA -->
+          <!-- 1) CONVITE ANIMADO -->
           <section>
             <div class="hero">
               <div class="hero-image-wrapper">
@@ -529,15 +505,6 @@
                   loading="lazy"
                 />
               </div>
-            </div>
-
-            <div class="music-box">
-              <strong>🎵 Música da Casa Mágica</strong>
-              <span>Se quiser, dá o play pra entrar ainda mais no clima do convite.</span>
-              <audio controls>
-                <source src="musica casa magica.mp3" type="audio/mpeg">
-                Seu navegador não suporta áudio.
-              </audio>
             </div>
           </section>
 
@@ -608,7 +575,7 @@
                     <ul class="gift-list">
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Ela me pediu <strong>pipoqueira</strong> e <strong>máquina de donuts</strong>… a Alexandra também é cozinheira! 😋</span>
+                        <span><strong>Eu pedi</strong> uma pipoqueira e uma máquina de donuts… também sou cozinheira! 😋</span>
                       </li>
                     </ul>
 
@@ -623,9 +590,7 @@
                       </li>
                       <li>
                         <span class="gift-dot"></span>
-                        <span>
-                          Coisas pra bonecas, como roupinhas e sapatinhos.
-                        </span>
+                        <span>Coisas pra bonecas, como roupinhas e sapatinhos.</span>
                       </li>
                       <li>
                         <span class="gift-dot"></span>
@@ -666,6 +631,27 @@
       const introCard  = document.getElementById('intro-card');
       const inviteCard = document.getElementById('invite-card');
       const btn        = document.getElementById('seeInviteBtn');
+      const audio      = document.getElementById('bg-music');
+
+      // tenta tocar assim que a página carrega
+      if (audio) {
+        const tryPlay = () => {
+          audio.play().catch(() => {
+            // se o navegador bloquear, vamos tentar de novo no primeiro toque/clique
+          });
+        };
+
+        tryPlay();
+
+        const resumeOnInteract = () => {
+          audio.play().catch(() => {});
+          document.removeEventListener('click', resumeOnInteract);
+          document.removeEventListener('touchstart', resumeOnInteract);
+        };
+
+        document.addEventListener('click', resumeOnInteract, { once: true });
+        document.addEventListener('touchstart', resumeOnInteract, { once: true });
+      }
 
       if (btn) {
         btn.addEventListener('click', () => {
@@ -678,3 +664,4 @@
   </script>
 </body>
 </html>
+
