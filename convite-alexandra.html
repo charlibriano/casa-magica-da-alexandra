@@ -5,7 +5,7 @@
   <title>Casa Mágica da Alexandra - Convite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Metadados para compartilhamento -->
+  <!-- Metadados para compartilhamento (WhatsApp, etc.) -->
   <meta name="description" content="Você foi convidado para entrar na Casa Mágica da Alexandra! Abra o convite animado e venha viver essa magia com a gente.">
   <meta property="og:title" content="Casa Mágica da Alexandra - Convite" />
   <meta property="og:description" content="Convite especial para um momento mágico com a Alexandra." />
@@ -157,9 +157,9 @@
     .intro-content {
       position: relative;
       z-index: 1;
-      text-align: center;
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto;
+      text-align: center;
     }
 
     .intro-tag {
@@ -172,7 +172,28 @@
       border: 1px solid rgba(123, 63, 255, 0.25);
       font-size: 0.82rem;
       color: var(--text-soft);
-      margin-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .intro-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (min-width: 720px) {
+      .intro-layout {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+      }
+    }
+
+    .intro-text-block {
+      flex: 1.2;
+      min-width: 0;
     }
 
     .intro-title {
@@ -185,7 +206,7 @@
       font-size: 0.98rem;
       line-height: 1.6;
       color: var(--text-soft);
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
 
     .intro-highlight {
@@ -196,15 +217,89 @@
     .intro-note {
       font-size: 0.85rem;
       color: var(--text-soft);
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .intro-buttons {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 14px;
+      justify-content: center;
+    }
+
+    @media (min-width: 720px) {
+      .intro-buttons {
+        justify-content: flex-start;
+      }
+    }
+
+    .alexandra-photo-card {
+      flex: 0.9;
+      max-width: 260px;
+      width: 80%;
+      background: radial-gradient(circle at top, #ffe9ff, #f3e7ff);
+      border-radius: 24px;
+      padding: 10px 10px 12px;
+      border: 1px solid rgba(123, 63, 255, 0.25);
+      box-shadow: 0 14px 30px rgba(59, 20, 120, 0.35);
+      position: relative;
+      overflow: hidden;
+      animation: floatPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes floatPulse {
+      0% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 14px 30px rgba(59, 20, 120, 0.35);
+      }
+      50% {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(59, 20, 120, 0.45);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 14px 30px rgba(59, 20, 120, 0.35);
+      }
+    }
+
+    .alexandra-photo-inner {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .alexandra-photo-inner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.3), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .alexandra-photo-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .alexandra-speech {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .speech-badge {
+      background: #fff;
+      border-radius: 999px;
+      padding: 3px 9px;
+      border: 1px solid rgba(123, 63, 255, 0.25);
+      font-size: 0.75rem;
     }
 
     .btn {
@@ -464,7 +559,7 @@
 </head>
 <body>
   <div class="page">
-    <!-- TELA 1: MENSAGEM ESPECIAL -->
+    <!-- TELA 1: MENSAGEM ESPECIAL COM ALEXANDRA -->
     <div id="intro-card" class="card">
       <div class="sparkles" aria-hidden="true"></div>
       <div class="intro-content">
@@ -472,24 +567,43 @@
           🌟 Convite especial só para você
         </div>
 
-        <h2 class="intro-title">Você é muito importante pra mim!</h2>
+        <div class="intro-layout">
+          <div class="intro-text-block">
+            <h2 class="intro-title">Você é muito importante pra mim!</h2>
 
-        <p class="intro-text">
-          Se você está recebendo este link, é porque faz parte da minha história
-          e do meu coração. 🥰<br><br>
-          Prepare-se para entrar na
-          <span class="intro-highlight">Casa Mágica da Alexandra</span> e viver
-          comigo um momento cheio de cor, imaginação e alegria.
-        </p>
+            <p class="intro-text">
+              Oi, eu sou a <span class="intro-highlight">Alexandra</span>! 🥰<br><br>
+              Se você está recebendo este link, é porque faz parte da minha história
+              e do meu coração.<br>
+              Eu quero muito que você venha viver esse dia mágico comigo!
+            </p>
 
-        <p class="intro-note">
-          Tem uma surpresa esperando por você no próximo passo...
-        </p>
+            <p class="intro-note">
+              Toque no botão abaixo para entrar na minha
+              <span class="intro-highlight">Casa Mágica</span> e ver o convite com todos os detalhes. ✨
+            </p>
 
-        <div class="intro-buttons">
-          <button id="seeInviteBtn" class="btn btn-primary">
-            ✨ Clique aqui para ver o convite
-          </button>
+            <div class="intro-buttons">
+              <button id="seeInviteBtn" class="btn btn-primary">
+                ✨ Clique aqui para abrir o meu convite
+              </button>
+            </div>
+          </div>
+
+          <div class="alexandra-photo-card">
+            <div class="alexandra-photo-inner">
+              <!-- Usa a imagem Alexandra.png que já está no seu repositório -->
+              <img
+                src="Alexandra.png"
+                alt="Alexandra convidando você para a sua festa na Casa Mágica"
+                loading="lazy"
+              />
+            </div>
+            <div class="alexandra-speech">
+              <span class="speech-badge">Oi! 💜</span>
+              <span>Estou te esperando lá dentro, tá?</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -510,7 +624,7 @@
 
       <main>
         <div class="layout">
-          <!-- LADO ESQUERDO: Texto + Botões -->
+          <!-- LADO ESQUERDO: TEXTO + INFO -->
           <section class="layout-left">
             <div class="invite-text-block">
               <h2>Você é nosso convidado!</h2>
