@@ -9,7 +9,8 @@
   <meta property="og:title" content="Casa Mágica da Alexandra - Convite" />
   <meta property="og:description" content="Convite especial para um momento mágico com a Alexandra." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="convite-ale.gif.gif" />
+  <meta property="og:url" content="https://charlibriano.github.io/casa-magica-da-alexandra/convite-alexandra.html" />
+  <meta property="og:image" content="https://charlibriano.github.io/casa-magica-da-alexandra/convite-ale.gif.gif" />
 
   <style>
     :root {
@@ -110,12 +111,12 @@
     }
 
     .alexandra-photo-card {
-      max-width: 280px;
+      max-width: 300px;
       width: 100%;
       margin: 0 auto 16px;
       background: radial-gradient(circle at top, #ffe9ff, #f3e7ff);
-      border-radius: 28px;
-      padding: 12px 12px 14px;
+      border-radius: 26px;
+      padding: 10px 10px 12px;
       border: 1px solid rgba(123, 63, 255, 0.25);
       box-shadow: 0 18px 38px rgba(59, 20, 120, 0.45);
       position: relative;
@@ -130,7 +131,7 @@
     }
 
     .alexandra-photo-inner {
-      border-radius: 22px;
+      border-radius: 20px;
       overflow: hidden;
       position: relative;
     }
@@ -165,12 +166,6 @@
       color: var(--text-soft);
     }
 
-    .intro-title {
-      font-size: 1.5rem;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
-    }
-
     .intro-subtitle {
       font-size: 0.98rem;
       margin-bottom: 10px;
@@ -186,6 +181,12 @@
       margin-bottom: 10px;
     }
 
+    .intro-strong {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
     .intro-note {
       font-size: 0.86rem;
       color: var(--text-soft);
@@ -193,7 +194,6 @@
     }
 
     @media (min-width: 720px) {
-      .intro-title { font-size: 1.7rem; }
       .intro-text  { font-size: 1rem; }
       .intro-note  { font-size: 0.9rem; }
     }
@@ -279,21 +279,10 @@
       margin-bottom: 6px;
     }
 
-    header p.subtitle {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-    }
-
     .layout {
       display: flex;
       flex-direction: column;
       gap: 20px;
-    }
-
-    @media (min-width: 880px) {
-      .layout {
-        flex-direction: column; /* no desktop, ainda deixamos GIF em cima e texto embaixo para manter prioridade visual */
-      }
     }
 
     .hero {
@@ -331,6 +320,7 @@
       font-size: 1.1rem;
       margin-bottom: 8px;
       color: var(--primary-dark);
+      text-align: center;
     }
 
     .invite-text-block p {
@@ -373,6 +363,7 @@
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
+      justify-content: flex-start;
     }
 
     footer {
@@ -455,18 +446,19 @@
           </div>
           <div class="alexandra-speech">
             <span class="speech-badge">Alexandra • 4 anos ✨</span>
-            <span class="speech-text">Esse convite é todinho feito com carinho pra você.</span>
+            <span class="speech-text">Preparei algo muito especial pra dividir com você.</span>
           </div>
         </div>
 
         <!-- TEXTO APÓS A FOTO -->
-        <h2 class="intro-title">Você é muito importante pra mim!</h2>
         <p class="intro-subtitle">Oi, eu sou a <span class="intro-highlight">Alexandra</span>! 🥰</p>
 
         <p class="intro-text">
-          Se você está recebendo este link, é porque faz parte da minha história
-          e do meu coração. Eu quero muito que você esteja comigo nesse dia
-          especial.
+          <span class="intro-strong">
+            Se você está recebendo este link, é porque faz parte da minha história e do meu coração.
+          </span>
+          <br />
+          Eu quero muito que você esteja comigo nesse dia especial.
         </p>
 
         <p class="intro-note">
@@ -489,7 +481,6 @@
       <header>
         <div class="badge">✨ <span>Convite especial da Casa Mágica da Alexandra</span></div>
         <h1>Casa Mágica da Alexandra</h1>
-        <!-- frase removida aqui para ficar mais limpo -->
       </header>
 
       <main>
@@ -523,7 +514,6 @@
                 <li><span class="info-dot"></span><span><strong>Data:</strong> 06 de dezembro</span></li>
                 <li><span class="info-dot"></span><span><strong>Horário:</strong> a partir das 15h</span></li>
                 <li><span class="info-dot"></span><span><strong>Endereço:</strong> Rua Martinez Camelo de Souza, 378 – Novo Tupi</span></li>
-                <li><span class="info-dot"></span><span>Convite em vídeo para ver no celular, computador ou TV.</span></li>
               </ul>
 
               <p class="extras-title">Ah, e se você quiser…</p>
