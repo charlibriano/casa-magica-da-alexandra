@@ -5,12 +5,11 @@
   <title>Casa Mágica da Alexandra - Convite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Metadados para compartilhamento (WhatsApp, redes sociais) -->
+  <!-- Metadados para compartilhamento -->
   <meta name="description" content="Você foi convidado para entrar na Casa Mágica da Alexandra! Abra o convite animado e venha viver essa magia com a gente.">
   <meta property="og:title" content="Casa Mágica da Alexandra - Convite" />
   <meta property="og:description" content="Convite especial para um momento mágico com a Alexandra." />
   <meta property="og:type" content="website" />
-  <!-- Se o GIF estiver hospedado no GitHub Pages, você pode ajustar a URL absoluta aqui depois -->
   <meta property="og:image" content="convite-ale.gif.gif" />
 
   <style>
@@ -24,7 +23,7 @@
       --text-soft: #5e4e7f;
       --radius-xl: 24px;
       --shadow-soft: 0 18px 45px rgba(16, 0, 62, 0.35);
-      --transition-fast: 0.2s ease-out;
+      --transition-fast: 0.25s ease-out;
     }
 
     * {
@@ -57,7 +56,7 @@
       background: var(--card-bg);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-soft);
-      padding: 20px 18px 22px;
+      padding: 22px 18px 24px;
       position: relative;
       overflow: hidden;
     }
@@ -68,7 +67,6 @@
       }
     }
 
-    /* Efeito de brilhos mágicos no fundo */
     .sparkles {
       position: absolute;
       inset: 0;
@@ -87,6 +85,27 @@
       0% { transform: translate3d(0, 0, 0); }
       50% { transform: translate3d(0, -8px, 0); }
       100% { transform: translate3d(0, 4px, 0); }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn var(--transition-fast) forwards;
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     header {
@@ -134,6 +153,100 @@
       color: var(--text-soft);
     }
 
+    /* TELA 1 - INTRO */
+    .intro-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .intro-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(123, 63, 255, 0.25);
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .intro-title {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .intro-text {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    .intro-highlight {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .intro-note {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-top: 8px;
+    }
+
+    .intro-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(76, 43, 189, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(76, 43, 189, 0.7);
+    }
+
+    .btn-soft {
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--primary-dark);
+      border: 1px solid rgba(123, 63, 255, 0.28);
+    }
+
+    .btn-soft:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(-1px);
+    }
+
+    /* TELA 2 - CONVITE COMPLETO */
     main {
       position: relative;
       z-index: 1;
@@ -159,7 +272,6 @@
       min-width: 0;
     }
 
-    /* BLOCO ESQUERDO – TEXTO + BOTÕES */
     .invite-text-block {
       background: linear-gradient(135deg, #fdf6ff, #fff8f0);
       border-radius: 20px;
@@ -220,45 +332,6 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 4px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      font-size: 0.86rem;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(76, 43, 189, 0.55);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(76, 43, 189, 0.7);
-    }
-
-    .btn-soft {
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--primary-dark);
-      border: 1px solid rgba(123, 63, 255, 0.28);
-    }
-
-    .btn-soft:hover {
-      background: rgba(255, 255, 255, 1);
-      transform: translateY(-1px);
     }
 
     /* BLOCO DIREITO – GIF DO CONVITE */
@@ -391,7 +464,38 @@
 </head>
 <body>
   <div class="page">
-    <div class="card">
+    <!-- TELA 1: MENSAGEM ESPECIAL -->
+    <div id="intro-card" class="card">
+      <div class="sparkles" aria-hidden="true"></div>
+      <div class="intro-content">
+        <div class="intro-tag">
+          🌟 Convite especial só para você
+        </div>
+
+        <h2 class="intro-title">Você é muito importante pra mim!</h2>
+
+        <p class="intro-text">
+          Se você está recebendo este link, é porque faz parte da minha história
+          e do meu coração. 🥰<br><br>
+          Prepare-se para entrar na
+          <span class="intro-highlight">Casa Mágica da Alexandra</span> e viver
+          comigo um momento cheio de cor, imaginação e alegria.
+        </p>
+
+        <p class="intro-note">
+          Tem uma surpresa esperando por você no próximo passo...
+        </p>
+
+        <div class="intro-buttons">
+          <button id="seeInviteBtn" class="btn btn-primary">
+            ✨ Clique aqui para ver o convite
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA 2: CONVITE COMPLETO -->
+    <div id="invite-card" class="card hidden">
       <div class="sparkles" aria-hidden="true"></div>
 
       <header>
@@ -420,19 +524,22 @@
                 Aperte o play do convite, deixe a magia começar e venha celebrar comigo!
               </p>
 
-              <!-- Você pode editar esses itens de informação se quiser colocar data, horário etc. -->
               <ul class="info-list">
                 <li>
                   <span class="info-dot"></span>
+                  <span><strong>Data:</strong> 06 de dezembro</span>
+                </li>
+                <li>
+                  <span class="info-dot"></span>
+                  <span><strong>Horário:</strong> a partir das 15h</span>
+                </li>
+                <li>
+                  <span class="info-dot"></span>
+                  <span><strong>Endereço:</strong> Rua Martinez Camelo de Souza, 378 – Novo Tupi</span>
+                </li>
+                <li>
+                  <span class="info-dot"></span>
                   <span>Convite em vídeo para ver no celular, computador ou TV.</span>
-                </li>
-                <li>
-                  <span class="info-dot"></span>
-                  <span>É só abrir o convite animado para ver todos os detalhes da festa.</span>
-                </li>
-                <li>
-                  <span class="info-dot"></span>
-                  <span>Se preferir, baixe o convite para compartilhar com a família e amigos.</span>
                 </li>
               </ul>
 
@@ -456,7 +563,6 @@
               </div>
 
               <div class="hero-image-wrapper">
-                <!-- Usa o mesmo arquivo que já está no seu repositório -->
                 <img
                   src="convite-ale.gif.gif"
                   alt="Convite animado da Casa Mágica da Alexandra"
@@ -492,5 +598,22 @@
       </footer>
     </div>
   </div>
+
+  <script>
+    // Troca da tela 1 (mensagem) para a tela 2 (convite)
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('seeInviteBtn');
+      var introCard = document.getElementById('intro-card');
+      var inviteCard = document.getElementById('invite-card');
+
+      if (btn && introCard && inviteCard) {
+        btn.addEventListener('click', function () {
+          introCard.classList.add('hidden');
+          inviteCard.classList.remove('hidden');
+          inviteCard.classList.add('fade-in');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
