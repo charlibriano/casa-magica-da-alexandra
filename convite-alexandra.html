@@ -39,7 +39,6 @@
       padding: 16px;
     }
 
-    /* esconde o player, música só toca em segundo plano */
     audio { display: none; }
 
     .page { width: 100%; max-width: 1040px; margin: auto; }
@@ -426,7 +425,7 @@
   </style>
 </head>
 <body>
-  <!-- áudio escondido, tenta tocar ao abrir a página -->
+  <!-- áudio escondido, toca ao abrir a página -->
   <audio id="bg-music" src="musica%20casa%20magica.mp3" preload="auto"></audio>
 
   <div class="page">
@@ -437,7 +436,7 @@
       <div class="intro-content">
         <div class="intro-tag">🌟 Convite especial só para você</div>
 
-        <!-- FOTO DA ALEXANDRA EM DESTAQUE -->
+        <!-- FOTO DA ALEXANDRA -->
         <div class="alexandra-photo-card">
           <div class="alexandra-photo-inner">
             <img
@@ -452,7 +451,7 @@
           </div>
         </div>
 
-        <!-- TEXTO APÓS A FOTO -->
+        <!-- TEXTO PRINCIPAL -->
         <p class="intro-text">
           <span class="intro-strong">
             Eu escolhi você para compartilhar esse momento mágico comigo… porque você faz parte da minha alegria.
@@ -487,7 +486,7 @@
       <main>
         <div class="layout">
 
-          <!-- 1) CONVITE ANIMADO -->
+          <!-- CONVITE ANIMADO -->
           <section>
             <div class="hero">
               <div class="hero-image-wrapper">
@@ -500,7 +499,7 @@
             </div>
           </section>
 
-          <!-- 2) INFORMAÇÕES DA FESTA ABAIXO -->
+          <!-- INFORMAÇÕES -->
           <section>
             <div class="invite-text-block">
               <h2>Você é meu convidado especial!</h2>
@@ -529,25 +528,23 @@
                 </a>
 
                 <details class="gift-details">
-                  <summary class="btn btn-soft">
-                    🎁 Ver sugestões de presentes (opcional)
-                  </summary>
+                  <summary class="btn btn-soft">🎁 Ver sugestões de presentes (opcional)</summary>
 
                   <div class="gift-box">
                     <p>
-                      Se você quiser me presentear, aqui vão algumas ideias que combinam comigo
-                      e com esse momento especial. Mas o mais importante de tudo é ter você lá comigo! 💜
+                      Se você quiser me presentear, aqui vão algumas ideias que combinam comigo.
+                      Mas o mais importante de tudo é ter você lá comigo! 💜
                     </p>
 
                     <div class="gift-section-title">👗 Roupas & calçados</div>
                     <ul class="gift-list">
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Amo vestidos rodados e coloridos, e conjuntos de short e camiseta, tudo tamanho 4 anos.</span>
+                        <span>Amo vestidos rodados e coloridos, e conjuntos de short e camiseta, tamanho 4 anos.</span>
                       </li>
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Calçados número <strong>25/26</strong>.</span>
+                        <span>Calçados tamanho <strong>25/26</strong>.</span>
                       </li>
                     </ul>
 
@@ -559,7 +556,7 @@
                       </li>
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Material de arte: lápis de cor, giz de cera, massinha, cadernos de desenho, olhos malucos, pompom, tinta, glitter… tudo que solta a imaginação!</span>
+                        <span>Material de arte: olhos malucos, pompom, tinta, glitter, massinha, lápis de cor…</span>
                       </li>
                     </ul>
 
@@ -567,7 +564,7 @@
                     <ul class="gift-list">
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Eu gostaria muito de ter uma pipoqueira e uma máquina de donuts… também adoro brincar de cozinheira! 😋</span>
+                        <span>Eu gostaria muito de ter uma <strong>pipoqueira de verdade</strong> e uma <strong>máquina de donuts de verdade</strong> (não são de brinquedo!)… porque eu amo cozinhar de verdade também! 😋</span>
                       </li>
                     </ul>
 
@@ -576,13 +573,12 @@
                       <li>
                         <span class="gift-dot"></span>
                         <span>
-                          Para cuidar das bonecas e bichinhos, eu queria muito um
-                          <strong>jaleco de médica</strong>.
+                          Para cuidar das bonecas e bichinhos, eu queria muito um <strong>jaleco de médica</strong>.
                         </span>
                       </li>
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Coisas pra bonecas, como roupinhas e sapatinhos.</span>
+                        <span>Roupinhas e sapatinhos para boneca.</span>
                       </li>
                       <li>
                         <span class="gift-dot"></span>
@@ -590,13 +586,11 @@
                       </li>
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Botons / pins para Crocs.</span>
+                        <span>Botons / Pins para Crocs.</span>
                       </li>
                       <li>
                         <span class="gift-dot"></span>
-                        <span>
-                          Bonecas e bichinhos de pelúcia eu já tenho bastante, então não preciso de mais por enquanto. 😅🤣
-                        </span>
+                        <span>Bonecas e pelúcias eu já tenho bastante! 😅🤣</span>
                       </li>
                     </ul>
 
@@ -625,12 +619,10 @@
       const btn        = document.getElementById('seeInviteBtn');
       const audio      = document.getElementById('bg-music');
 
-      // tenta tocar assim que a página carrega
+      // tenta tocar a música automaticamente
       if (audio) {
         const tryPlay = () => {
-          audio.play().catch(() => {
-            // se o navegador bloquear, vamos tentar de novo no primeiro toque/clique
-          });
+          audio.play().catch(() => {});
         };
 
         tryPlay();
@@ -645,6 +637,7 @@
         document.addEventListener('touchstart', resumeOnInteract, { once: true });
       }
 
+      // alterna tela 1 → tela 2
       if (btn) {
         btn.addEventListener('click', () => {
           introCard.classList.add('hidden');
@@ -654,5 +647,6 @@
       }
     });
   </script>
+
 </body>
 </html>
