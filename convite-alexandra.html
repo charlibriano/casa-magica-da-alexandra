@@ -39,6 +39,7 @@
       padding: 16px;
     }
 
+    /* esconde o player, música só em segundo plano */
     audio { display: none; }
 
     .page { width: 100%; max-width: 1040px; margin: auto; }
@@ -425,8 +426,15 @@
   </style>
 </head>
 <body>
-  <!-- áudio escondido, toca ao abrir a página -->
-  <audio id="bg-music" src="musica%20casa%20magica.mp3" preload="auto"></audio>
+  <!-- áudio escondido, tenta tocar ao abrir; loop para ficar o tempo todo -->
+  <audio
+    id="bg-music"
+    src="musica%20casa%20magica.mp3"
+    preload="auto"
+    autoplay
+    loop
+    playsinline
+  ></audio>
 
   <div class="page">
     <!-- ========== TELA 1 ========== -->
@@ -564,7 +572,11 @@
                     <ul class="gift-list">
                       <li>
                         <span class="gift-dot"></span>
-                        <span>Eu gostaria muito de ter uma <strong>pipoqueira de verdade</strong> e uma <strong>máquina de donuts de verdade</strong> (não são de brinquedo!)… porque eu amo cozinhar de verdade também! 😋</span>
+                        <span>
+                          Eu gostaria muito de ter uma <strong>pipoqueira de verdade</strong> e uma
+                          <strong>máquina de donuts de verdade</strong> (não são de brinquedo!)…
+                          porque eu amo cozinhar de verdade também! 😋
+                        </span>
                       </li>
                     </ul>
 
@@ -619,14 +631,17 @@
       const btn        = document.getElementById('seeInviteBtn');
       const audio      = document.getElementById('bg-music');
 
-      // tenta tocar a música automaticamente
+      // tenta tocar a música ao carregar
       if (audio) {
         const tryPlay = () => {
-          audio.play().catch(() => {});
+          audio.play().catch(() => {
+            // se bloquear aqui, a gente resolve no primeiro toque
+          });
         };
 
         tryPlay();
 
+        // garante que no primeiro toque/click a música comece
         const resumeOnInteract = () => {
           audio.play().catch(() => {});
           document.removeEventListener('click', resumeOnInteract);
