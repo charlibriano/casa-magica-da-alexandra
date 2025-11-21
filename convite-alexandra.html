@@ -39,6 +39,7 @@
       padding: 16px;
     }
 
+    /* esconde o player, música só toca em segundo plano */
     audio { display: none; }
 
     .page { width: 100%; max-width: 1040px; margin: auto; }
@@ -164,14 +165,6 @@
       font-size: 0.78rem;
       color: var(--text-soft);
     }
-
-    .intro-subtitle {
-      font-size: 0.98rem;
-      margin-bottom: 10px;
-      color: var(--text-soft);
-    }
-
-    .intro-highlight { font-weight: 600; color: var(--primary); }
 
     .intro-text {
       font-size: 0.95rem;
@@ -460,11 +453,9 @@
         </div>
 
         <!-- TEXTO APÓS A FOTO -->
-        <p class="intro-subtitle">Oi, eu sou a <span class="intro-highlight">Alexandra</span>! 🥰</p>
-
         <p class="intro-text">
           <span class="intro-strong">
-            Se você está recebendo este link, é porque faz parte da minha história e do meu coração.
+            Eu escolhi você para compartilhar esse momento mágico comigo… porque você faz parte da minha alegria.
           </span>
           <br />
           Eu quero muito que você esteja comigo nesse dia especial.
@@ -472,7 +463,8 @@
 
         <p class="intro-note">
           Toque no botão abaixo para entrar na minha
-          <span class="intro-highlight">Casa Mágica</span> e ver o convite completo da minha festa. ✨
+          <span class="intro-strong" style="font-weight:600; color:var(--primary);">Casa Mágica</span>
+          e ver o convite completo da minha festa. ✨
         </p>
 
         <div class="intro-buttons">
@@ -575,7 +567,7 @@
                     <ul class="gift-list">
                       <li>
                         <span class="gift-dot"></span>
-                        <span><strong>Eu pedi</strong> uma pipoqueira e uma máquina de donuts… também sou cozinheira! 😋</span>
+                        <span>Eu gostaria muito de ter uma pipoqueira e uma máquina de donuts… também adoro brincar de cozinheira! 😋</span>
                       </li>
                     </ul>
 
@@ -664,4 +656,3 @@
   </script>
 </body>
 </html>
-
