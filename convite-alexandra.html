@@ -170,53 +170,5 @@ send.onclick = () => {
 };
 </script>
 
-
-<!-- Painel administrativo (oculto para convidados) -->
-<div id="admin-panel" class="card hidden" style="margin-top:16px;background:#fdf9ff;border:1px solid rgba(0,0,0,0.05)">
-  <h2 style="margin-top:0;color:#5c27d6">Lista de confirmados</h2>
-  <p style="font-size:0.9rem;color:#555;margin-bottom:10px">
-    Esta seção só aparece porque você abriu o link especial de administrador.<br>
-    Apenas você, com esse link, consegue ver esta lista.
-  </p>
-  <ul id="admin-list" style="list-style:none;padding-left:0;font-size:0.9rem;line-height:1.5;margin:0"></ul>
-</div>
-
-<script>
-// modo admin via parametro de URL, ex: ?admin=felipe4215
-(function() {
-  const params = new URLSearchParams(window.location.search);
-  const token = params.get("admin");
-  const isAdmin = token === "felipe4215"; // se quiser, troque o valor do token
-
-  if (!isAdmin) return;
-
-  const panel = document.getElementById("admin-panel");
-  const list  = document.getElementById("admin-list");
-  if (!panel || !list || typeof db === "undefined") return;
-
-  panel.classList.remove("hidden");
-
-  db.ref("confirmacoes").orderByChild("createdAt").on("value", snap => {
-    const data = snap.val() || {};
-    const entries = Object.values(data);
-
-    list.innerHTML = "";
-    if (!entries.length) {
-      list.innerHTML = "<li>Nenhuma confirmação registrada ainda.</li>";
-      return;
-    }
-
-    entries
-      .sort((a,b) => (a.createdAt || "").localeCompare(b.createdAt || ""))
-      .forEach((item, idx) => {
-        const li = document.createElement("li");
-        const dt = item.createdAt ? new Date(item.createdAt) : null;
-        const dataStr = dt ? dt.toLocaleString("pt-BR") : "";
-        li.textContent = `${idx+1}. ${item.nome || "Sem nome"} ${dataStr ? "— " + dataStr : ""}`;
-        list.appendChild(li);
-      });
-  });
-})();
-</script>
 </body>
 </html>
