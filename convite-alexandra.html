@@ -637,7 +637,6 @@
 
           <div class="alexandra-photo-card">
             <div class="alexandra-photo-inner">
-              <!-- Usa a imagem Alexandra.png que já está no seu repositório -->
               <img
                 src="Alexandra.png"
                 alt="Alexandra convidando você para a sua festa na Casa Mágica"
@@ -748,7 +747,7 @@
     </div>
   </div>
 
-  <!-- MODAL LISTA DE PRESENTES -->
+  <!-- MODAL LISTA DE PRESENTES (COMEÇA ESCONDIDO) -->
   <div id="gift-modal" class="modal hidden" aria-hidden="true">
     <div id="giftModalBackdrop" class="modal-backdrop"></div>
     <div class="modal-card">
@@ -796,23 +795,28 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var btn = document.getElementById('seeInviteBtn');
       var introCard = document.getElementById('intro-card');
       var inviteCard = document.getElementById('invite-card');
+      var seeInviteBtn = document.getElementById('seeInviteBtn');
 
-      if (btn && introCard && inviteCard) {
-        btn.addEventListener('click', function () {
+      var giftBtn = document.getElementById('giftListBtn');
+      var giftModal = document.getElementById('gift-modal');
+      var closeGiftBtn = document.getElementById('closeGiftModal');
+      var giftBackdrop = document.getElementById('giftModalBackdrop');
+
+      // Garante que o modal começa escondido
+      if (giftModal) {
+        giftModal.classList.add('hidden');
+        giftModal.setAttribute('aria-hidden', 'true');
+      }
+
+      if (seeInviteBtn && introCard && inviteCard) {
+        seeInviteBtn.addEventListener('click', function () {
           introCard.classList.add('hidden');
           inviteCard.classList.remove('hidden');
           inviteCard.classList.add('fade-in');
         });
       }
-
-      // Modal lista de presentes
-      var giftBtn = document.getElementById('giftListBtn');
-      var giftModal = document.getElementById('gift-modal');
-      var closeGiftBtn = document.getElementById('closeGiftModal');
-      var giftBackdrop = document.getElementById('giftModalBackdrop');
 
       function closeGiftModal() {
         if (!giftModal) return;
